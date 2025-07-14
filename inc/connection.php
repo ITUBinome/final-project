@@ -5,9 +5,9 @@ ini_set("display_errors", "1");
 function dbconnect() {
     
     $host = "localhost";
-    $username = "root";
-    $pwd = "";
-    $db = "emprunt_objets";
+    $username = "root"; // ETU004282
+    $pwd = ""; // OgeGnKyQ
+    $db = "emprunt_objets"; // db_s2_ETU004282
 
     $conn = mysqli_connect($host, $username, $pwd, $db);
 
