@@ -136,17 +136,6 @@ function get_objets_par_categorie($id_categorie = null) {
     return $objets;
 }
 
-function ajouter_objet($nom, $id_categorie, $id_membre) {
-    $connexion = dbconnect();
-    $nom = mysqli_real_escape_string($connexion, $nom);
-
-    $requete = "INSERT INTO objet (nom_objet, id_categorie, id_membre)
-                VALUES ('$nom', $id_categorie, $id_membre)";
-    mysqli_query($connexion, $requete);
-
-    return mysqli_insert_id($connexion); // ID du nouvel objet
-}
-
 function ajouter_images_objet($id_objet, $noms_images) {
     $connexion = dbconnect();
 
@@ -203,5 +192,13 @@ function upload_images($files, $uploadDir) {
     return $noms_images;
 }
 
+function ajouter_objet($nom, $id_categorie, $id_membre) {
+    $connexion = dbconnect();
+    $nom = mysqli_real_escape_string($connexion, $nom);
 
+    $requete = "INSERT INTO objet (nom_objet, id_categorie, id_membre)
+                VALUES ('$nom', $id_categorie, $id_membre)";
+    mysqli_query($connexion, $requete);
 
+    return mysqli_insert_id($connexion); // ID du nouvel objet
+}
