@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="connexion">
+            <a href="login.php">Connecter</a>
+        </div>
+        <div class="inscription">
+            <a href="inscription.php">Inscription</a>
+        </div>
+    </div>    
 </body>
 </html>
