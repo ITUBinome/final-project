@@ -14,7 +14,7 @@ session_destroy();
 <body>
     <h1>Inscription</h1>
 
-    <form action="traitement_inscription.php" method="POST" enctype="multipart/form-data">
+    <form action="traitement/traitement-inscription.php" method="POST" enctype="multipart/form-data">
         <label for="nom">Nom complet :</label><br>
         <input type="text" id="nom" name="nom" required><br><br>
 
@@ -38,7 +38,7 @@ session_destroy();
         <input type="password" id="mdp" name="mdp" required><br><br>
 
         <label for="image_profil">Image de profil :</label><br>
-        <input type="file" id="image_profil" name="(image_profil)" accept="image/*"><br><br>
+        <input type="file" id="image_profil" name="image_profil" accept="image/*"><br><br>
 
         <input type="submit" value="S'inscrire">
     </form>

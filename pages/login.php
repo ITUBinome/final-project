@@ -8,7 +8,7 @@
 <body>
     <h1>Connexion</h1>
 
-    <form action="traitement_connexion.php" method="POST">
+    <form action="traitement/traitement-login.php" method="POST">
         <label for="email">Adresse e-mail :</label><br>
         <input type="email" id="email" name="email" required><br><br>
 

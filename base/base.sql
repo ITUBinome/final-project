@@ -58,8 +58,8 @@ CREATE TABLE emprunt (
 
 -- Insertion des 4 membres
 INSERT INTO membre (nom, date_naissance, genre, email, ville, mdp) VALUES
-('Marie Dubois', '1985-03-15', 'F', 'marie.dubois@email.com', 'Paris', '1234'),
-('Jean Martin', '1990-07-22', 'M', 'jean.martin@email.com', 'Lyon', '1234'),
+('Marie Dubois', '1985-03-15', 'F', '', 'Paris', '1234'),
+('Jean Martin', '1990-07-22', 'M', 'jean.martin@emmarie.dubois@email.comail.com', 'Lyon', '1234'),
 ('Sophie Leroy', '1988-11-08', 'F', 'sophie.leroy@email.com', 'Marseille', '1234'),
 ('Pierre Moreau', '1992-05-30', 'M', 'pierre.moreau@email.com', 'Toulouse', '1234');
 
