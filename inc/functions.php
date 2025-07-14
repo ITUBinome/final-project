@@ -136,3 +136,8 @@ function get_objets_par_categorie($id_categorie = null) {
     return $objets;
 }
 
+function ajout_nouveau_objet($nom_objet , $id_user , $id_user)
+{
+    $mysql = "insert into "
+}
+
