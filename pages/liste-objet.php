@@ -18,11 +18,7 @@ $objets = get_liste_objet();
         <h1>Objets disponibles à l'emprunt</h1>
     </header>
 
-    <nav>
-        <a href="liste-objet.php">Liste objets</a>
-        <a href="filtrage-by-categorie.php">Filtrer par catégorie</a>
-        <a href="logout.php">Déconnexion</a>
-    </nav>
+    <?php include "../inc/nav.php" ?>
 
     <div class="container">
         <?php

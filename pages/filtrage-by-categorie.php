@@ -20,11 +20,7 @@ $objets = get_objets_par_categorie($id_categorie);
         <h1>Filtrer les objets par catégorie</h1>
     </header>
 
-     <nav>
-        <a href="liste-objet.php">Liste objets</a>
-        <a href="filtrage-by-categorie.php">Filtrer par catégorie</a>
-        <a href="logout.php">Déconnexion</a>
-    </nav>
+    <?php include "../inc/nav.php" ?>
 
     <form method="GET" action="">
         <label for="categorie">Choisir une catégorie :</label>
