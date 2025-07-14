@@ -2,7 +2,8 @@
 -- CHARACTER SET utf8mb4 
 -- COLLATE utf8mb4_unicode_ci;
 
-USE db_s2_ETU004282;
+CREATE DATABASE emprunt_objets;
+USE emprunt_objets;
 
 -- CRÉATION DES TABLES
 
