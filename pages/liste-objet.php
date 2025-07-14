@@ -82,7 +82,7 @@ $objets = get_liste_objet();
             margin-bottom: 0.75rem;
             color: #212529;
         }
-
+      
         .card p {
             margin-bottom: 0.5rem;
             color: #495057;
@@ -161,5 +161,6 @@ $objets = get_liste_objet();
     </footer>
 
     <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Modif -->
 </body>
 </html>
