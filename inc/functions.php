@@ -55,15 +55,84 @@ function get_user_by_mail_mdp($email, $mdp) {
 }
 
 function get_liste_objet() {
-    $sql = "SELECT * FROM vue_objets_complets";
+
+    $sql = "
+        SELECT 
+            o.id_objet,
+            o.nom_objet,
+            c.nom_categorie,
+            m.nom AS proprietaire,
+            (SELECT nom_image FROM images_objet WHERE id_objet = o.id_objet LIMIT 1) AS image,
+            e.date_emprunt,
+            e.date_retour
+        FROM objet o
+        JOIN categorie_objet c ON o.id_categorie = c.id_categorie
+        JOIN membre m ON o.id_membre = m.id_membre
+        LEFT JOIN emprunt e ON o.id_objet = e.id_objet AND e.date_retour IS NULL
+        ORDER BY o.id_objet DESC
+    ";
+
     $result = mysqli_query(dbconnect(), $sql);
     $objets = [];
 
-    if ($result != null && mysqli_num_rows($result) > 0) {
-        while ($objet = mysqli_fetch_assoc($result)) {
-            $objets[] = $objet;
-        }
+    while ($row = mysqli_fetch_assoc($result)) {
+        $row['statut_emprunt'] = $row['date_retour'] === null && $row['date_emprunt'] !== null ? 'Emprunté' : 'Disponible';
+        $objets[] = $row;
     }
 
+    mysqli_close(dbconnect());
     return $objets;
 }
+
+function get_categories() {
+    $conn = dbconnect();
+    $sql = "SELECT * FROM categorie_objet ORDER BY nom_categorie";
+    $result = mysqli_query($conn, $sql);
+
+    $categories = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $categories[] = $row;
+    }
+    mysqli_close($conn);
+    return $categories;
+}
+
+
+function get_objets_par_categorie($id_categorie = null) {
+    $conn = dbconnect();
+
+    $where = "";
+    if ($id_categorie) {
+        $id_categorie = mysqli_real_escape_string($conn, $id_categorie);
+        $where = "WHERE o.id_categorie = $id_categorie";
+    }
+
+    $sql = "
+        SELECT 
+            o.id_objet,
+            o.nom_objet,
+            c.nom_categorie,
+            m.nom AS proprietaire,
+            (SELECT nom_image FROM images_objet WHERE id_objet = o.id_objet LIMIT 1) AS image,
+            e.date_emprunt,
+            e.date_retour
+        FROM objet o
+        JOIN categorie_objet c ON o.id_categorie = c.id_categorie
+        JOIN membre m ON o.id_membre = m.id_membre
+        LEFT JOIN emprunt e ON o.id_objet = e.id_objet AND e.date_retour IS NULL
+        $where
+        ORDER BY o.id_objet DESC
+    ";
+
+    $result = mysqli_query($conn, $sql);
+    $objets = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $row['statut_emprunt'] = $row['date_retour'] === null && $row['date_emprunt'] !== null ? 'Emprunté' : 'Disponible';
+        $objets[] = $row;
+    }
+
+    mysqli_close($conn);
+    return $objets;
+}
+

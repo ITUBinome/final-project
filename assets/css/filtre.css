@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4fdf6;
+    color: #2e4d38;
+}
+
+header {
+    background-color: #4CAF50;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    background-color: #388e3c;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 30px 0 20px;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    min-width: 220px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 260px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card h3 {
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.disponible {
+    color: green;
+    font-weight: bold;
+}
+
+.emprunte {
+    color: red;
+    font-weight: bold;
+}
+
+p.no-objets {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50px;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #888;
+}
