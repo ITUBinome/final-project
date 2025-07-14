@@ -295,5 +295,16 @@ function emprunter_objet($id_objet, $id_membre, $duree) {
     return mysqli_query($conn, $sql_insert);
 }
 
+function get_liste_emprunts($id_membre1)
+{
+    $sql = "select * from emprunt where id_membre = '$id_membre1'";
+    $result = mysqli_query(dbconnect() , $sql);
+    $result1 = [];
+
+    while ($emp = mysqli_fetch_assoc($result)) {
+        $result1[] = $emp; 
+    }
+    return $result1;
+}
 
 ?>

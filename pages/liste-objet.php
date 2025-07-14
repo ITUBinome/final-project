@@ -3,6 +3,8 @@ session_start();
 require "../inc/functions.php";
 
 $objets = get_liste_objet();
+$emprunts = get_liste_emprunts($_SESSION['user']['nom']);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -148,9 +150,21 @@ foreach ($objets as $objet) {
 <?php
 }
 ?>
-
     </div>
 
+    <div class="container">
+        <h3>Liste des emprunts :</h3>
+        <?php foreach($emprunts as $emprunt) { ?>
+            <div class="card-body">
+                <h3></h3>
+            </div>
+
+            <div class="container">
+                <a href="traitement/traitement_emprunt_rendre.php?rend=<?=$emprunt['id_emprunt']?>">Rendre</a>
+                <a href="traitement/traitement_emprunt_abime.php?abi=<?=$emprunt['id_emprunt']?>">Abimé</a>
+            </div>
+    <?php } ?> 
+    </div>
     <footer>
         &copy; <?php echo date("Y"); ?> EmpruntObjets - Tous droits réservés
     </footer>
