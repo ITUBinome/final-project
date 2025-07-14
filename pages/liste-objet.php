@@ -111,35 +111,44 @@ $objets = get_liste_objet();
 
     <div class="container">
         <?php
-        foreach ($objets as $objet) {
-            ?>
-            <div class="card">
-                <?php
-                if (!empty($objet['image'])) {
-                    echo '<img src="../images/' . htmlspecialchars($objet['image']) . '" alt="' . htmlspecialchars($objet['nom_objet']) . '">';
-                } else {
-                    echo '<img src="../assets/images/default.jpg">';
-                }
-                ?>
-
-                <div class="card-body">
-                    <h3><?= htmlspecialchars($objet['nom_objet']) ?></h3>
-                    <p><strong>Catégorie :</strong> <?= htmlspecialchars($objet['nom_categorie']) ?></p>
-                    <p><strong>Propriétaire :</strong> <?= htmlspecialchars($objet['proprietaire']) ?></p>
-
-                    <?php
-                    if ($objet['statut_emprunt'] === 'Emprunté') {
-                        echo '<p class="emprunte">Statut : Emprunté</p>';
-                        echo '<p><small>Depuis le ' . htmlspecialchars($objet['date_emprunt']) . '</small></p>';
-                    } else {
-                        echo '<p class="disponible">Statut : Disponible</p>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <?php
+foreach ($objets as $objet) {
+    ?>
+    <div class="card" onclick="window.location.href='fiche-objet.php?id=<?= $objet['id_objet'] ?>'">
+        <?php
+        if (!empty($objet['image'])) {
+            echo '<img src="../images/' . htmlspecialchars($objet['image']) . '" alt="' . htmlspecialchars($objet['nom_objet']) . '">';
+        } else {
+            echo '<img src="../assets/images/default.jpg">';
         }
         ?>
+
+        <div class="card-body">
+            <h3><?= htmlspecialchars($objet['nom_objet']) ?></h3>
+            <p><strong>Catégorie :</strong> <?= htmlspecialchars($objet['nom_categorie']) ?></p>
+            <p><strong>Propriétaire :</strong> <?= htmlspecialchars($objet['proprietaire']) ?></p>
+
+            <?php
+            if ($objet['statut_emprunt'] === 'Emprunté') {
+                // Calcul de date retour estimée
+                $date_emprunt = new DateTime($objet['date_emprunt']);
+                $duree = (int)$objet['duree_jours'] + 1; 
+                $date_retour = $date_emprunt->modify("+$duree days");
+                $date_aujourdhui = new DateTime();
+                $interval = $date_aujourdhui->diff($date_retour);
+
+                echo '<p class="emprunte">Statut : Emprunté</p>';
+                echo '<p><small>Disponible dans ' . $interval->format(format: '%a jours') . '</small></p>';
+            } else {
+                echo '<p class="disponible">Statut : Disponible</p>';
+                echo '<a href="emprunter.php?id_objet=' . $objet['id_objet'] . '" class="btn btn-sm btn-primary mt-2">Emprunter</a>';
+            }
+            ?>
+        </div>
+    </div>
+<?php
+}
+?>
+
     </div>
 
     <footer>

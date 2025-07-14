@@ -54,6 +54,9 @@ CREATE TABLE emprunt (
     FOREIGN KEY (id_membre) REFERENCES membre(id_membre) ON DELETE CASCADE
 );
 
+ALTER TABLE emprunt ADD COLUMN duree_jours INT;
+
+
 -- INSERTION DES DONNÉES DE TEST
 
 -- Insertion des 4 membres

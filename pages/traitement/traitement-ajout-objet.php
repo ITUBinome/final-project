@@ -14,5 +14,5 @@
     ajouter_images_objet($id_objet, $images);
 
     // 3. Redirection ou message
-    //header("Location: ../liste-objet.php");
+    header("Location: ../liste-objet.php");
 ?>
