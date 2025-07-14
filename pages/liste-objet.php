@@ -11,6 +11,8 @@ $objets = get_liste_objet();
     <title>Liste des objets - Emprunt d'objets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -19,29 +21,6 @@ $objets = get_liste_objet();
             flex-direction: column;
             min-height: 100vh;
         }
-
-        nav {
-            background-color: #4e73df;
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            margin: 0 0.5rem;
-            font-weight: 500;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -117,35 +96,19 @@ $objets = get_liste_objet();
             padding: 1.5rem 0;
             margin-top: auto;
         }
+
+        .upload-image {
+        max-width: 600px;
+        margin: 2rem auto;
+    }
+    
+    
     </style>
 </head>
 <body>
 
     <?php include "../inc/nav.php" ?>
 
-    <div class="container upload-image">
-        <h3>Ajouter de nouveau objet</h3>
-        <form action="traitement/traitement-ajout-objet.php" method="post" enctype="multipart/form-data">
-
-            <label for="nom_objet">Nom objet :</label>
-            <input type="text" name="nom_objet" required>
-
-            <label for="id_categorie">Catégorie :</label>
-            <select name="id_categorie" id="" required>
-                <option value="1">Esthétique</option>
-                <option value="2">Bricolage</option>
-                <option value="3">Mécanique</option>
-                <option value="4">Cuisine</option>
-            </select>
-
-
-            <label for="image_objet">Image objet :</label>
-            <input type="file" id="image_objet" name="image_objet[]" accept="image/*" multiple>
-
-            <input type="submit" value="Ajouter">
-
-        </form>
-    </div>
     <div class="container">
         <?php
         foreach ($objets as $objet) {

@@ -13,6 +13,8 @@ $objets = get_objets_par_categorie($id_categorie);
     <title>Filtrer par catégorie - Emprunt d'objets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -160,11 +162,7 @@ $objets = get_objets_par_categorie($id_categorie);
 </head>
 <body>
 
-    <nav class="d-flex justify-content-center">
-        <a href="liste-objet.php">Liste objets</a>
-        <a href="filtrage-by-categorie.php">Filtrer par catégorie</a>
-        <a href="logout.php">Déconnexion</a>
-    </nav>
+    <?php include "../inc/nav.php" ?>
 
     <form method="GET" action="" class="filter-form">
         <label for="categorie">Choisir une catégorie :</label>
